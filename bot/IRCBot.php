@@ -5,6 +5,7 @@ final class IRCBot {
   private array $ex = array();
   private string $lastKey = null;
   private string $channel = null;
+  private bool $joined = false;
 
   public function __construct(array $config) {
     // Init MySQL connection
@@ -45,7 +46,7 @@ final class IRCBot {
   public function run() {
     while (!feof($this->socket)) {
       $data = fgets($this->socket, 128);
-      echo nl2br($data);
+      echo $data;
       flush();
 
       $this->ex = explode(' ', $data);
@@ -55,8 +56,15 @@ final class IRCBot {
           $this->ex[1]
         ); 
       }
+
+      if (strpos($data, 'JOIN ##skullbox') && !$this->joined) {
+        $this->joined = true;
+      }
       
-      $this->checkNewPost();
+      if ($this->joined) {
+        $this->checkNewPost();
+      }
+
       usleep(100);
     }
   }
@@ -80,10 +88,8 @@ final class IRCBot {
       $name = $row['name'];
     }  
     
-    echo '****', $key, $name; 
     if ($key !== $this->lastKey) {
       $msg = 'PRIVMSG '.$this->channel.': '.$name.' '.$key;
-      echo '**********'.$msg;
       $this->send($msg);
       $this->lastKey = $key;
     }
