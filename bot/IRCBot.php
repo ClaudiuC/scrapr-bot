@@ -88,8 +88,10 @@ final class IRCBot {
       $name = $row['name'];
     }  
     
+    echo $key, $this->lastKey, "\n"; 
     if ($key !== $this->lastKey) {
       $msg = 'PRIVMSG '.$this->channel.': '.$name.' '.$key;
+      echo "sent ", $msg, "\n";
       $this->send($msg);
       $this->lastKey = $key;
     }
