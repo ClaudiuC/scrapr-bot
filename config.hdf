@@ -2,6 +2,10 @@ Server {
   DefaultDocument = index.php
 }
 
+Eval {
+  EnableHipHopSyntax = true
+}
+
 Log {
   Level = Error
   UseLogFile = true
