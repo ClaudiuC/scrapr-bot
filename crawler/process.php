@@ -9,4 +9,4 @@ set_exception_handler(
 );
 
 $task = new CrawlerTask($argv[1]);
-$task->setXpath(CrawlerPath::get('/rss/channel/item'))->fetch()->store();
+$task->setXpath('/rss/channel/item')->fetch()->store();

@@ -37,7 +37,9 @@ final class CrawlerTask {
     $this->path = CrawlerPath::get(self::DEFAULT_XPATH);
   }
 
-  public function setXpath(CrawlerPath $path) {
+  public function setXpath(string $path) {
+    $path = CrawlerPath::get($path);
+
     if (!$this->path) {
       $this->path = $path;
     } else {

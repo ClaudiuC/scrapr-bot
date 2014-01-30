@@ -30,7 +30,8 @@ final class Crawler {
     $this->result = new RSSFeed($result);
   }
 
-  public function getPath(CrawlerPath $path) {
+  public function getPath(string $path) {
+    CrawlerPath::get($path);
     return $this->result->getSimpleXML()->xpath($path);              
   }
 }
