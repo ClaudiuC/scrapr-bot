@@ -14,7 +14,7 @@ final class IRCBot {
   private function login(array $config) {
     $this->send(
       'USER', 
-      $config['nick'].' '.$config['nick'].' :'.$config['name']
+      $config['nick'].' '.$config['server'].' '.$config['server'].' :'.$config['name']
     );
     $this->send('NICK', $config['nick']);
   }
@@ -31,7 +31,8 @@ final class IRCBot {
         $this->ex[1]
       ); 
     }
-
+    
+    usleep(100);
     $this->run();
   }
 
