@@ -6,18 +6,6 @@ Eval {
   EnableHipHopSyntax = true
 }
 
-Log {
-  Level = Error
-  UseLogFile = true
-  File = /var/log/hhvm/error.log
-  Access {
-    * {
-      File = /var/log/hhvm/access.log
-      Format = %h %l %u %t \"%r\" %>s %b
-    }
-  }
-}
-
 StaticFile {
   FilesMatch {
     * {
