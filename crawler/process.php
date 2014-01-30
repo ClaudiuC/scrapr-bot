@@ -8,5 +8,5 @@ set_exception_handler(
   }
 );
 
-$task = new CrawlerTask($argv[0]);
+$task = new CrawlerTask($argv[1]);
 $task->setXpath(CrawlerPath::get('/rss/channel/item/'))->fetch()->store();
