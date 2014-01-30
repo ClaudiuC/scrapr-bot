@@ -18,7 +18,7 @@ final class IRCBot {
     $this->send('NICK', $config['nick']);
   }
 
-  private function run() {
+  public function run() {
     while (!feof($socket)) {
       $data = fgets($this->socket, 128);
       echo nl2br($data);
