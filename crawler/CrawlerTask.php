@@ -38,13 +38,7 @@ final class CrawlerTask {
   }
 
   public function setXpath(string $path) {
-    $path = CrawlerPath::get($path);
-
-    if (!$this->path) {
-      $this->path = $path;
-    } else {
-      throw new CrawlerTaskException('xpath() should be the first method you call');
-    }
+    $this->path = CrawlerPath::get($path);
 
     return $this;
   } 
