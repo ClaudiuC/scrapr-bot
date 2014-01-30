@@ -4,12 +4,6 @@ set_time_limit(0);
 
 require_once 'CrawlerTask.php';
 
-set_exception_handler(
-  function(Exception $ex) {
-    error_log($ex->getMessage());
-  }
-);
-
 $feeds = array(
   // Chitty Chat
   'http://www.skullbox.info/index.php?type=rss2;action=.xml;sa=recent;limit=10;board=33',
@@ -56,7 +50,11 @@ $feeds = array(
 );
 
 foreach ($feeds as $feed_uri) {
-  $task = new CrawlerTask($feed_uri);
-  $task->setXpath('/rss/channel/item')->fetch()->store();
+  try {
+    $task = new CrawlerTask($feed_uri);
+    $task->setXpath('/rss/channel/item')->fetch()->store();
+  } catch (Exception $e) {
+    error_log($ex->getMessage());
+  }
   usleep(100000);
 }

@@ -26,8 +26,13 @@ final class Crawler {
     } else {
       throw new CrawlerException('Crawler requires CURL. CURL is missing. What gives?');
     } 
-
-    $this->result = new RSSFeed($result);
+    
+    try {
+      $this->result = new RSSFeed($result);
+    } catch (Exception $e) {
+      error_log('Exception reading "'.$url.'": '.$e->getMessage());
+      throw $e;
+    }
   }
 
   public function getPath(string $path) {
