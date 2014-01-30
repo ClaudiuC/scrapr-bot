@@ -10,7 +10,8 @@ $config = array(
   'port' => 6667, 
   'nick' => 'Skullbot', 
   'name' => 'Skullbot', 
-  'channel' => '#skullbox', 
+  'channel' => '##skullbox', 
 );
 
 $bot = new IRCBot($config);
+$bot->run();

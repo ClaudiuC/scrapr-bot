@@ -7,7 +7,6 @@ final class IRCBot {
   public function __construct(array $config) {
     $this->socket = fsockopen($config['server'], $config['port']);
     $this->login($config);
-    $this->run();
     $this->send('JOIN', $config['channel']);
   }
 
@@ -20,20 +19,21 @@ final class IRCBot {
   }
 
   private function run() {
-    $data = fgets($this->socket, 128);
-    echo nl2br($data);
-    flush();
+    while (!feof($socket)) {
+      $data = fgets($this->socket, 128);
+      echo nl2br($data);
+      flush();
 
-    $this->ex = explode(' ', $data);
-    if($this->ex[0] == 'PING') {
-      $this->send(
-        'PONG', 
-        $this->ex[1]
-      ); 
+      $this->ex = explode(' ', $data);
+      if($this->ex[0] == 'PING') {
+        $this->send(
+          'PONG', 
+          $this->ex[1]
+        ); 
+      }
+      
+      usleep(100);
     }
-    
-    usleep(100);
-    $this->run();
   }
 
   function send(string $cmd, string $msg = null) {
