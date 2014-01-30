@@ -16,7 +16,6 @@ $feeds = array(
   'http://www.skullbox.info/index.php?type=rss2;action=.xml;sa=recent;limit=10;board=2',
   'http://www.skullbox.info/index.php?type=rss2;action=.xml;sa=recent;limit=10;board=27',
   'http://www.skullbox.info/index.php?type=rss2;action=.xml;sa=recent;limit=10;board=57',
-  'http://www.skullbox.info/index.php?type=rss2;action=.xml;sa=recent;limit=10;board=25',
 
   // Grafica si design
   'http://www.skullbox.info/index.php?type=rss2;action=.xml;sa=recent;limit=10;board=41',

@@ -103,7 +103,6 @@ final class CrawlerTask {
 
     $result = mysql_query($query);
     $this->validateQueryResult($result, $query);
-    mysql_free_result($result);
   }  
   
   // Should type that result
