@@ -76,7 +76,7 @@ final class RSSFeed {
 }
 final class RSSFeedException extends Exception {}
 
-final public class CrawlerPath {
+final class CrawlerPath {
   // PHP doesn't have a method to validate xpath syntax. Such joy.
   public static function get(string $xpath) {
     $xml = new SimpleXMLElement('<xml></xml>');
