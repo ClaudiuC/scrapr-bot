@@ -9,6 +9,7 @@ final class IRCBot {
 
   private array $ops = array(
     'Zapa_',
+    'mihai_',
   );
 
   public function __construct(array $config) {
