@@ -79,7 +79,9 @@ final class IRCBot {
     }  
     
     if ($key !== $this->lastKey) {
-      $this->send('PRIVMSG '.$this->channel.': '.$name.' '.$key);
+      $msg = 'PRIVMSG '.$this->channel.': '.$name.' '.$key;
+      echo '**********'.$msg;
+      $this->send($msg);
       $this->lastKey = $key;
     }
   }
