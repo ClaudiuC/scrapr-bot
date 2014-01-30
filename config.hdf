@@ -1,3 +1,7 @@
+Server {
+  DefaultDocument = index.php
+}
+
 Log {
   Level = Error
   UseLogFile = true
