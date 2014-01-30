@@ -82,11 +82,11 @@ final class CrawlerPath {
     $xml = new SimpleXMLElement('<xml></xml>');
     if ($xml->xpath($xpath) === false) {
       throw new CrawlerPathException(
-        sprintf('%s is not valid xpath syntax', $this->path())
+        sprintf('%s is not valid xpath syntax', $xpath)
       );
     } 
 
-    return $this->path();
+    return $xpath;
   }
 }
 final class CrawlerPathException extends Exception {}
