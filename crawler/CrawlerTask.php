@@ -82,6 +82,8 @@ final class CrawlerTask {
     if (!$key && !$name) {
       return;
     }
+    
+    echo 'key', $key, 'name', $name;
 
     // Check duplicate
     $query = sprintf(
@@ -101,6 +103,8 @@ final class CrawlerTask {
       mysql_real_escape_string($key),
       mysql_real_escape_string($name)
     );
+    
+    echo $query;
 
     $result = mysql_query($query);
     $this->validateQueryResult($result, $query);
