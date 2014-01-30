@@ -7,6 +7,10 @@ final class IRCBot {
   private string $channel = null;
   private bool $joined = false;
 
+  private array $ops = array(
+    'Zapa_',
+  );
+
   public function __construct(array $config) {
     // Init MySQL connection
     $url = parse_url(getenv('CLEARDB_DATABASE_URL'));
@@ -59,6 +63,7 @@ final class IRCBot {
 
       if (strpos($data, 'JOIN ##skullbox') && !$this->joined) {
         $this->joined = true;
+        $this->setOP();
       }
       
       if ($this->joined) {
@@ -92,6 +97,14 @@ final class IRCBot {
       $msg = 'PRIVMSG '.$this->channel.' : '.$name.' '.$key;
       $this->send($msg);
       $this->lastKey = $key;
+    }
+  }
+
+  private function setOP() {
+    foreach ($this->ops as $op) {
+      $this->send('msg ChanServ OP '.$this->channel.' '.$op);
+      $msg = 'PRIVMSG '.$this->channel.' : '.$op.', you owe me a beer';
+      $this->send($msg);
     }
   }
 }
