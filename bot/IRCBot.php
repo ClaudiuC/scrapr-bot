@@ -32,7 +32,6 @@ final class IRCBot {
       ); 
     }
 
-    $command = str_replace(array(chr(10), chr(13)), '', $this->ex[3]);
     $this->run();
   }
 
