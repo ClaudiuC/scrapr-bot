@@ -64,7 +64,7 @@ final class IRCBot {
 
       if (strpos($data, 'JOIN ##skullbox') && !$this->joined) {
         $this->joined = true;
-        $this->setOP();
+        //$this->setOP();
       }
       
       if ($this->joined) {
