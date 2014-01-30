@@ -54,7 +54,7 @@ foreach ($feeds as $feed_uri) {
     $task = new CrawlerTask($feed_uri);
     $task->setXpath('/rss/channel/item')->fetch()->store();
   } catch (Exception $e) {
-    error_log($ex->getMessage());
+    error_log($e->getMessage());
   }
   usleep(100000);
 }
