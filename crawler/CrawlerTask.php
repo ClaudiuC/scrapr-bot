@@ -67,7 +67,7 @@ final class CrawlerTask {
     $name = null;
     
     foreach ($this->data as $post) {
-      echo $post['title'] . '\n';
+      echo $post->title . '\n';
       var_dump($post);
       // Get first post that's not a reply
       if (strpos($post['title'], 'Re: ') === false || strpos($post['title'], 'Re: ') !== 0) {
