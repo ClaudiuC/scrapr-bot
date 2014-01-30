@@ -73,11 +73,14 @@ final class IRCBot {
     $query = 'SELECT * FROM `task_log` ORDER BY `created` DESC LIMIT 1';
     $result = mysql_query($query);
     
+    $key = null;
+    $name = null; 
     while ($row = mysql_fetch_assoc($result)) {
       $key = $row['key'];
       $name = $row['name'];
     }  
     
+    echo '****', $key, $name; 
     if ($key !== $this->lastKey) {
       $msg = 'PRIVMSG '.$this->channel.': '.$name.' '.$key;
       echo '**********'.$msg;
