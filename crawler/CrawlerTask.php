@@ -67,12 +67,10 @@ final class CrawlerTask {
     $name = null;
     
     foreach ($this->data as $post) {
-      echo $post->title . '\n';
-      var_dump($post);
       // Get first post that's not a reply
-      if (strpos($post['title'], 'Re: ') === false || strpos($post['title'], 'Re: ') !== 0) {
-        $key = $post['guid'];
-        $name = $post['title'];
+      if (strpos($post->title, 'Re: ') === false || strpos($post->title, 'Re: ') !== 0) {
+        $key = $post->guid;
+        $name = $post->title;
         break;
       }
     }
@@ -81,8 +79,6 @@ final class CrawlerTask {
     if (!$key && !$name) {
       return;
     }
-    
-    echo 'key', $key, 'name', $name;
 
     // Check duplicate
     $query = sprintf(
@@ -102,8 +98,6 @@ final class CrawlerTask {
       mysql_real_escape_string($key),
       mysql_real_escape_string($name)
     );
-    
-    echo $query;
 
     $result = mysql_query($query);
     $this->validateQueryResult($result, $query);
