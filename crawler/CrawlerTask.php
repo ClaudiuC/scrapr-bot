@@ -93,6 +93,8 @@ final class CrawlerTask {
       return; // nothing to do here
     }
 
+    mysql_free_result($result);
+
     $query = sprintf(
       'INSERT INTO `task_log` (`key`, `name`, `created`) VALUES (\'%s\', \'%s\', NOW())',
       mysql_real_escape_string($key),
@@ -101,6 +103,7 @@ final class CrawlerTask {
 
     $result = mysql_query($query);
     $this->validateQueryResult($result, $query);
+    mysql_free_result($result);
   }  
   
   // Should type that result
