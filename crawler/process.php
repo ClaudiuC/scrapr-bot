@@ -12,7 +12,6 @@ set_exception_handler(
 
 $feeds = array(
   // Chitty Chat
-  'http://www.skullbox.info/index.php?type=rss2;action=.xml;sa=recent;limit=10;board=106',
   'http://www.skullbox.info/index.php?type=rss2;action=.xml;sa=recent;limit=10;board=33',
   'http://www.skullbox.info/index.php?type=rss2;action=.xml;sa=recent;limit=10;board=2',
   'http://www.skullbox.info/index.php?type=rss2;action=.xml;sa=recent;limit=10;board=27',

@@ -26,7 +26,7 @@ final class Crawler {
     } else {
       throw new CrawlerException('Crawler requires CURL. CURL is missing. What gives?');
     } 
-    var_dump($result); 
+
     $this->result = new RSSFeed($result);
   }
 
