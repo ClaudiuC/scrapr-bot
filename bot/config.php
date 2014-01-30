@@ -8,3 +8,5 @@ $config = array(
   'password' => getenv('IRC_BOT_PASS'),
   'channel' => '##skullbox', 
 );
+
+echo getenv('IRC_BOT_PASS');

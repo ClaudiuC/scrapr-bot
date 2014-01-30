@@ -103,7 +103,8 @@ final class IRCBot {
 
   private function setOP() {
     foreach ($this->ops as $op) {
-      $this->send('msg ChanServ OP '.$this->channel.' '.$op);
+      $msg = 'MSG ChanServ OP '.$this->channel.' '.$op;
+      $this->send($msg);
       $msg = 'PRIVMSG '.$this->channel.' : '.$op.', you owe me a beer';
       $this->send($msg);
     }
